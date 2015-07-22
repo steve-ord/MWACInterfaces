@@ -1,6 +1,6 @@
 /** 
  * @file:   File.h
- * @author: sord
+ * @author: Stephen Ord
  * @brief Abstract base class for files used as interfaces to the MWA Correlator 
  * @date 22 July 2015, 9:33 PM
  * 
