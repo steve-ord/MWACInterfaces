@@ -1,0 +1,57 @@
+.TH "File" 3 "Wed Jul 22 2015" "Version 0" "MWAC Interface Library" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+File \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <File\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFile\fP ()"
+.br
+.RI "\fISimple constructor\&. \fP"
+.ti -1c
+.RI "\fBFile\fP (const \fBFile\fP &orig)"
+.br
+.RI "\fISimple destructor\&. \fP"
+.ti -1c
+.RI "virtual int \fBinitialise\fP (int fd)=0"
+.br
+.RI "\fIpure virtual initialiser \fP"
+.ti -1c
+.RI "virtual \fB~File\fP ()"
+.br
+.RI "\fIdestructor \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+: \fBFile\&.h\fP : sord  Abstract base class for files used as interfaces to the MWA Correlator 
+.PP
+\fBDate:\fP
+.RS 4
+22 July 2015, 9:33 PM
+.RE
+.PP
+This library may support multiple interfaces that I am essentially thinking of as 'files' though they are likely to be mostly socket connections\&. Keeping the interface file based may allow some extension and generalisation outside the MWA\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual int File::initialise (int fd)\fC [pure virtual]\fP"
+
+.PP
+pure virtual initialiser 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfd\fP is a file descriptor 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MWAC Interface Library from the source code\&.
