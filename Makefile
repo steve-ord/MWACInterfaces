@@ -61,6 +61,7 @@ build: .build-post
 	/usr/pkg/bin/cppcheck --xml --xml-version=2 --enable=style --enable=warning --inconclusive \
 --language=c++ *.cpp *.c 2> ./reports/cppcheck.xml
 	/usr/pkg/bin/cppcheck-htmlreport --file=./reports/cppcheck.xml --report-dir=./reports
+	/usr/local/bin/doxygen ./doxyfile.cfg
 # clean
 clean: .clean-post
 
