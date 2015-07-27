@@ -16,6 +16,8 @@
 #ifndef CONNECTIONHANDLER_H
 #define	CONNECTIONHANDLER_H
 
+#define DEFAULT PORT 8001
+
 class ConnectionHandler {
 public:
     ConnectionHandler();

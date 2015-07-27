@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/ConnectionHandler.o \
 	${OBJECTDIR}/File.o \
 	${OBJECTDIR}/vdifio.o
 
@@ -65,6 +66,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libmwacinterfaces.a: ${OBJECTFILES}
 	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libmwacinterfaces.a ${OBJECTFILES} 
 	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libmwacinterfaces.a
 
+${OBJECTDIR}/ConnectionHandler.o: ConnectionHandler.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ConnectionHandler.o ConnectionHandler.cpp
+
 ${OBJECTDIR}/File.o: File.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -77,6 +83,7 @@ ${OBJECTDIR}/vdifio.o: vdifio.c
 
 # Subprojects
 .build-subprojects:
+	cd ../socket_comms && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -85,6 +92,7 @@ ${OBJECTDIR}/vdifio.o: vdifio.c
 
 # Subprojects
 .clean-subprojects:
+	cd ../socket_comms && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl
