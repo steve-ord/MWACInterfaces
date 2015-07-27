@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>ConnectionHandler.h</itemPath>
       <itemPath>File.h</itemPath>
+      <itemPath>../../mwac/trunk/base/twopip_socket.h</itemPath>
       <itemPath>vdifio.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -17,6 +18,7 @@
                    projectFiles="true">
       <itemPath>ConnectionHandler.cpp</itemPath>
       <itemPath>File.cpp</itemPath>
+      <itemPath>../../mwac/trunk/base/twopip_socket.c</itemPath>
       <itemPath>vdifio.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -42,19 +44,17 @@
       <compileType>
         <archiverTool>
         </archiverTool>
-        <requiredProjects>
-          <makeArtifact PL="../socket_comms"
-                        CT="3"
-                        CN="Debug"
-                        AC="true"
-                        BL="true"
-                        WD="../socket_comms"
-                        BC="${MAKE}  -f Makefile CONF=Debug"
-                        CC="${MAKE}  -f Makefile CONF=Debug clean"
-                        OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsocket_comms.a">
-          </makeArtifact>
-        </requiredProjects>
       </compileType>
+      <item path="../../mwac/trunk/base/twopip_socket.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../mwac/trunk/base/twopip_socket.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="ConnectionHandler.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ConnectionHandler.h" ex="false" tool="3" flavor2="0">
@@ -90,6 +90,16 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <item path="../../mwac/trunk/base/twopip_socket.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../mwac/trunk/base/twopip_socket.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="ConnectionHandler.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ConnectionHandler.h" ex="false" tool="3" flavor2="0">

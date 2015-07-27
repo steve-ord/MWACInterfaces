@@ -15,6 +15,7 @@
 
 #ifndef CONNECTIONHANDLER_H
 #define	CONNECTIONHANDLER_H
+#include "twopip_socket.h"
 
 #define DEFAULT PORT 8001
 
