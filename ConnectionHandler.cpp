@@ -15,6 +15,7 @@
  */
 
 #include "ConnectionHandler.h"
+#include "twopip_socket.h"
 
 ConnectionHandler::ConnectionHandler() {
 }
