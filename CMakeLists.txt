@@ -9,6 +9,7 @@ project(MWAC_External_Interfaces)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
 find_package(Cppcheck)
+find_package(doxygen)
 
 add_subdirectory(src/vdifio)
 add_subdirectory(src/interfaces)
@@ -23,4 +24,7 @@ IF (CPPCHECK_FOUND)
     EXECUTE_PROCESS(WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND ${CPPCHECK-HTML_EXECUTABLE} --file=./reports/cppcheck-results.xml --report-dir=./reports)
 
 ENDIF (CPPCHECK_FOUND)       
+IF (DOXYGEN_FOUND)
+    EXECUTE_PROCESS(WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND doxygen ./doxyfile.cfg)
+ENDIF (DOXYGEN_FOUND)
 
