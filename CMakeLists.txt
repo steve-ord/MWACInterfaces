@@ -15,11 +15,12 @@ add_subdirectory(src/interfaces)
 
 
 IF (CPPCHECK_FOUND)
-    EXECUTE_PROCESS(WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND ${CPPCHECK_EXECUTABLE} --inconclusive --enable=style --enable=warning --language=c++ --xml --xml-version=2 src/ 
+    EXECUTE_PROCESS(WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND ${CPPCHECK_EXECUTABLE} --inconclusive --enable=style --enable=warning --language=c++ --xml-version=2 src/ 
         RESULT_VARIABLE rval
-        ERROR_VARIABLE result
+        ERROR_FILE ${CMAKE_SOURCE_DIR}/reports/cppcheck-results.xml
         )
-    FILE(WRITE ${CMAKE_SOURCE_DIR}/cppcheck-results.xml ${result})
-    
+#   FILE(WRITE ${CMAKE_SOURCE_DIR}/reports/cppcheck-results.xml ${result})
+    EXECUTE_PROCESS(WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND ${CPPCHECK-HTML_EXECUTABLE} --file=./reports/cppcheck-results.xml --report-dir=./reports)
+
 ENDIF (CPPCHECK_FOUND)       
 
