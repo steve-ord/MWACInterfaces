@@ -15,7 +15,7 @@ add_subdirectory(src/interfaces)
 
 
 IF (CPPCHECK_FOUND)
-    EXECUTE_PROCESS(WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND ${CPPCHECK_EXECUTABLE} --inconclusive --enable=style --enable=warning --language=c++--xml --xml-version=2 src/ 
+    EXECUTE_PROCESS(WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND ${CPPCHECK_EXECUTABLE} --inconclusive --enable=style --enable=warning --language=c++ --xml --xml-version=2 src/ 
         RESULT_VARIABLE rval
         ERROR_VARIABLE result
         )
