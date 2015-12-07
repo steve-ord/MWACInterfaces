@@ -15,7 +15,7 @@ add_subdirectory(src/interfaces)
 
 
 IF (CPPCHECK_FOUND)
-    EXECUTE_PROCESS(WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND ${CPPCHECK_EXECUTABLE} --enable=all --inline-suppr  --xml src/vdifio src/interfaces 
+    EXECUTE_PROCESS(WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND ${CPPCHECK_EXECUTABLE} --enable=all --inline-suppr  --xml --xml-version=2 src/vdifio src/interfaces 
         RESULT_VARIABLE rval
         ERROR_VARIABLE result
         )
