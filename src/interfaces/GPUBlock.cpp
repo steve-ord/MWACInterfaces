@@ -96,8 +96,8 @@ char * GPUBlock::get_dat_ptr(int antenna, int pol, int chan, int step) {
 }
 
 int GPUBlock::natural_to_mwac(int antenna, int pol) {
-    /*! This function calculates the internal station index from an
-     antenna and a pol
+    /*! This function calculates the internal (GPU/PFB) station index from an
+     antenna and a pol in "natural" order
      */
 
     return 0;

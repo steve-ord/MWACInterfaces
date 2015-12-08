@@ -16,7 +16,7 @@ add_subdirectory(src/interfaces)
 
 
 IF (CPPCHECK_FOUND)
-    EXECUTE_PROCESS(WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND ${CPPCHECK_EXECUTABLE} --inconclusive --enable=style --enable=warning --language=c++ --xml-version=2 src/ 
+    EXECUTE_PROCESS(WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND ${CPPCHECK_EXECUTABLE} --inconclusive --enable=style --enable=warning --language=c++ --xml-version=2 ./src/ 
         RESULT_VARIABLE rval
         ERROR_FILE ${CMAKE_SOURCE_DIR}/reports/cppcheck-results.xml
         )
@@ -25,6 +25,6 @@ IF (CPPCHECK_FOUND)
 
 ENDIF (CPPCHECK_FOUND)       
 IF (DOXYGEN_FOUND)
-    EXECUTE_PROCESS(WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND doxygen ./doxyfile.cfg)
+    EXECUTE_PROCESS(WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src COMMAND doxygen ./doxyfile.cfg)
 ENDIF (DOXYGEN_FOUND)
 
