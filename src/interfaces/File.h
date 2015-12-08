@@ -21,10 +21,8 @@ public:
     //! Simple destructor
     File(const File& orig);
     //! pure virtual initialiser
-    /*!
-      \param fd is a file descriptor
-    */
-    virtual int initialise(int fd) = 0;
+
+    virtual int initialise(void) = 0;
     //! destructor
     virtual ~File();
 private:

@@ -21,9 +21,15 @@
 
 class ConnectionHandler {
 public:
+    //! Default Constructor
     ConnectionHandler();
+    //! Copy Constructor
     ConnectionHandler(const ConnectionHandler& orig);
+    //! Destructor
     virtual ~ConnectionHandler();
+
+
+    
 private:
 
 };
