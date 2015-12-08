@@ -19,6 +19,12 @@ File::File() {
 }
 
 File::File(const File& orig) {
+
+    this->nstation = orig.nstation;
+    this->nchan = orig.nchan;
+    this->npol = orig.npol;
+    this->nsteps = orig.nsteps;
+
 }
 
 File::~File() {

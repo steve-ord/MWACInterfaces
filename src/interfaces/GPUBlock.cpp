@@ -30,6 +30,9 @@ GPUBlock::GPUBlock(char *base) {
 }
 GPUBlock::GPUBlock(const GPUBlock& orig) {
 
+    this->base_ptr = orig.base_ptr;
+    this->sample_size = orig.sample_size;
+    
 
 }
 
