@@ -29,21 +29,21 @@ public:
     //! Set the number of channels in this file
     void set_nchan(int nchan);
     //! Get the number of channels in this file
-    int get_nchan(void);
+    int get_nchan(void) const;
 
     //! Set the number of stations in this file
     void set_nstation(int nstation);
 
     //! Get the number of stations in this file
-    int get_nstation(void);
+    int get_nstation(void) const;
 
     //! Get the number of polarisations
     void set_npol(int npol);
     //! Set the number of polarisations
-    int get_npol(void);
+    int get_npol(void) const;
 
     //! Get the number of time steps in the file
-    int get_nsteps(void);
+    int get_nsteps(void) const;
 
     //! Set the number of time steps in the file
     void set_nsteps(int nstep);

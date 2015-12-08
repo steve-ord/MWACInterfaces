@@ -34,7 +34,7 @@ void File::set_nchan(int nchan) {
     this->nchan = nchan;
 }
 
-int File::get_nchan() {
+int File::get_nchan() const {
     return this->nchan;
 }
 
@@ -42,18 +42,18 @@ void File::set_nstation(int nstation) {
     this->nstation = nchan;
 }
 
-int File::get_nstation() {
+int File::get_nstation() const {
     return this->nstation;
 }
 void File::set_npol(int npol) {
     this->npol = npol;
 }
 
-int File::get_npol() {
+int File::get_npol()  const {
     return this->npol;
 }
 
-int File::get_nsteps() {
+int File::get_nsteps() const {
     return this->nsteps;
 }
 
