@@ -8,6 +8,14 @@
 #include "File.h"
 
 File::File() {
+
+    //! default init
+
+    nstation = 0;
+    nchan = 0;
+    npol = 0;
+    nsteps = 0;
+
 }
 
 File::File(const File& orig) {
