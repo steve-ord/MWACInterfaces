@@ -74,9 +74,37 @@ char * GPUBlock::get_dat_ptr(int antenna, int pol, int chan, int step) {
 
     */
 
-    return NULL;
+    /*! the station in the data based upon the antenna number requested
+
+     We have decided to hide all the various station mappings in one place and this is it
+     I am going to take and antenna in "natural order" and map it to the GPUBOX station here and from
+     then on forget about it
+    */
+
+    /*! there are two steps one is the mod16 antenna mapping that the PFB does
+     and the second is the receiver ordering that the receivers do
+    */
+
+    int station = natural_to_mwac(antenna,pol);
+
+    size_t step_size = get_nchan() * get_nstation() * get_npol() * 2 * this->sample_size;
+    size_t channel_offset = get_nstation() * get_npol() * 2 * this->sample_size;
+    size_t station_offset = get_npol() * 2 * this->sample_size;
+    size_t offset = step*step_size + chan*channel_offset + station * station_offset;
+
+    return get_base_addr()+offset;
 }
 
+int GPUBlock::natural_to_mwac(int antenna, int pol) {
+    /*! This function calculates the internal station index from an
+     antenna and a pol
+     */
+
+    return 0;
+
+
+   
+}
 
 GPUBlock::~GPUBlock() {
 
