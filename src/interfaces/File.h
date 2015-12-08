@@ -22,11 +22,52 @@ public:
     File(const File& orig);
     //! pure virtual initialiser
 
+
     virtual int initialise(void) = 0;
     //! destructor
+
+    //! Set the number of channels in this file
+    void set_nchan(int nchan);
+    //! Get the number of channels in this file
+    int get_nchan(void);
+
+    //! Set the number of stations in this file
+    void set_nstation(int nstation);
+
+    //! Get the number of stations in this file
+    int get_nstation(void);
+
+    //! Get the number of polarisations
+    void set_npol(int npol);
+    //! Set the number of polarisations
+    int get_npol(void);
+
+    //! Get the number of time steps in the file
+    int get_nsteps(void);
+
+    //! Set the number of time steps in the file
+    void set_nsteps(int nstep);
+
+    //! Get the base address of the data block
+    virtual char * get_base_addr(void) = 0;
+
+    //! Get the pointer for a particular sample
+    virtual char * get_dat_ptr(void) = 0;
+
+    //! Destructor
     virtual ~File();
 private:
+    //! the number of stations in this file
+    int nstation;
 
+    //! the number of polarisations per station
+    int npol;
+
+    //! the number of channels per polarisation
+    int nchan;
+
+    //! the number of time steps
+    int nsteps;
 };
 
 #endif	/* FILE_H */
