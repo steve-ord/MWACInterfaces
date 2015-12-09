@@ -14,6 +14,8 @@
 #ifndef FILE_H
 #define	FILE_H
 
+#include <time.h>
+
 class File {
 public:
     //! Simple constructor
@@ -48,6 +50,12 @@ public:
     //! Set the number of time steps in the file
     void set_nsteps(int nstep);
 
+    //! The time label of this frame
+    virtual void set_time(time_t the_time) = 0;
+
+    //! Get the time
+    time_t get_time();
+
     //! Get the base address of the data block
     virtual char * get_base_addr(void) = 0;
 
@@ -68,6 +76,10 @@ private:
 
     //! the number of time steps
     int nsteps;
+
+    //! the time lable of this file
+    time_t utctime;
+    
 };
 
 #endif	/* FILE_H */

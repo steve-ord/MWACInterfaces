@@ -49,8 +49,8 @@ private:
 
     char * base_ptr;
     int sample_size;
-    int natural_to_mwac(int antenna, int pol);
-    
+    int natural_to_mwac(int antenna, int pol) const;
+
 
 };
 
