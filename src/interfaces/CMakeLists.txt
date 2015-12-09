@@ -1,10 +1,11 @@
 
 include_directories(./)
 
-add_library(mwac_interfaces STATIC ConnectionHandler.cpp File.cpp GPUBlock.cpp)
+add_library(mwac_interfaces STATIC ConnectionHandler.cpp File.cpp GPUBlock.cpp EDABlock.cpp)
 install(FILES ConnectionHandler.h File.h DESTINATION include)
 install(FILES mwa_eda.h DESTINATION include)
 install(FILES GPUBlock.h DESTINATION include)
+install(FILES EDABlock.h DESTINATION include)
 
 
 

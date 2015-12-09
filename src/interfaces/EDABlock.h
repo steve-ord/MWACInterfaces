@@ -1,32 +1,28 @@
 //
-//  GPUBlock.h
+//  EDABlock.h
 //  MWAC_External_Interfaces
 //
 //  Created by Stephen Ord on 8/12/2015.
 //
 //
 
-#ifndef __MWAC_External_Interfaces__GPUBlock__
-#define __MWAC_External_Interfaces__GPUBlock__
+#ifndef __MWAC_External_Interfaces__EDABlock__
+#define __MWAC_External_Interfaces__EDABlock__
 
 #include <iostream>
 #include <time.h>
 
 #include "File.h"
-#include "GPUBlock.h"
 
-class GPUBlock: public File {
+class EDABlock: public File {
 
 public:
-    //! Simple constructor
-    GPUBlock();
-
-    //! Simple constructir - memory already allocated
-    GPUBlock(char *base_ptr,time_t utctime);
+    //! Simple constructor uses the default eda parameters
+    EDABlock();
 
     //! Simple copy constructor
 
-    GPUBlock(const GPUBlock& orig);
+    EDABlock(const EDABlock& orig);
 
     //! initialiser
     //! this just brings the default initialise from the base clear here in case you need it
@@ -50,15 +46,13 @@ public:
     time_t get_time() const;
     //! destructor
 
-    ~GPUBlock();
+    ~EDABlock();
 
 private:
     //! The pointer to first sample
     char * base_ptr;
     //! the size of a sample in bytes
     int sample_size;
-    //! the input mapping function
-    int natural_to_mwac(int antenna, int pol) const;
     //! the time lable of this file
     time_t utctime;
 
@@ -66,4 +60,4 @@ private:
 };
 
 
-#endif /* defined(__MWAC_External_Interfaces__GPUBlock__) */
+#endif /* defined(__MWAC_External_Interfaces__EDABlock__) */

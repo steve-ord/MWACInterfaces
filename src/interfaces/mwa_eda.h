@@ -40,3 +40,4 @@ typedef struct {
     volatile int block_time_offset[MWA_EDA_SHM_N_BLOCKS];    // time offset (seconds) for the block relative to epoch_time
 } mwa_eda_shmbuf_header;
 
+#endif

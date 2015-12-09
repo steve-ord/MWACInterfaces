@@ -20,19 +20,22 @@ GPUBlock::GPUBlock() {
 
 }
 
-GPUBlock::GPUBlock(char *base) {
+GPUBlock::GPUBlock(char *base,time_t utctime) {
     /*! Constructor for a GPUBlock if the memory has already been allocated
      this is likely to be the main constructor
      */
     set_sample_size(1);
+    set_time(utctime);
     initialise(base,128, 2, 128, 10000);
+
 
 }
 GPUBlock::GPUBlock(const GPUBlock& orig) {
 
     this->base_ptr = orig.base_ptr;
     this->sample_size = orig.sample_size;
-    
+    this->utctime = orig.utctime;
+
 
 }
 
@@ -165,7 +168,12 @@ int GPUBlock::natural_to_mwac(int antenna, int pol) const {
 
    
 }
-
+void GPUBlock::set_time(time_t the_time) {
+    this->utctime = the_time;
+}
+time_t GPUBlock::get_time() const {
+    return this->utctime;
+}
 GPUBlock::~GPUBlock() {
 
     

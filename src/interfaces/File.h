@@ -54,13 +54,15 @@ public:
     virtual void set_time(time_t the_time) = 0;
 
     //! Get the time
-    time_t get_time();
+    virtual time_t get_time() const = 0;
 
     //! Get the base address of the data block
     virtual char * get_base_addr(void) = 0;
 
     //! Get the pointer for a particular sample
     virtual char * get_dat_ptr(void) = 0;
+
+  
 
     //! Destructor
     virtual ~File();
@@ -77,9 +79,8 @@ private:
     //! the number of time steps
     int nsteps;
 
-    //! the time lable of this file
-    time_t utctime;
-    
+
+
 };
 
 #endif	/* FILE_H */
