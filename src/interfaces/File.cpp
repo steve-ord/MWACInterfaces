@@ -25,6 +25,7 @@ File::File(const File& orig) {
     this->nchan = orig.nchan;
     this->npol = orig.npol;
     this->nsteps = orig.nsteps;
+    this->complex_sample_size = orig.complex_sample_size;
 
 }
 
