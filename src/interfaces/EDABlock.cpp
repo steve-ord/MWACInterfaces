@@ -79,10 +79,9 @@ EDABlock::EDABlock() {
 EDABlock::EDABlock(const EDABlock& orig) {
 
     this->base_ptr = orig.base_ptr;
-    this->sample_size = orig.sample_size;
     this->utctimes = orig.utctimes;
     this->epoch_time = orig.epoch_time;
-    this->sample_size = orig.sample_size;
+
 
 
 

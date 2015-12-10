@@ -57,8 +57,6 @@ private:
     //! The pointer to first sample
     char * base_ptr;
     //! the size of a sample in bytes
-    int sample_size;
-    //! the time epoch of these blocks
     time_t epoch_time;
     //! utctimes of all the blocks
     volatile int *utctimes;
