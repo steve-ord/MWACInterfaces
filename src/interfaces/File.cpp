@@ -15,6 +15,7 @@ File::File() {
     nchan = 0;
     npol = 0;
     nsteps = 0;
+    complex_sample_size = 0;
 
 }
 

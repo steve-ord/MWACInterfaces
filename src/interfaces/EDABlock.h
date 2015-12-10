@@ -47,7 +47,7 @@ class EDABlock: public File {
     time_t get_time() const;
 
     //! get the input id
-    int get_input(int index);
+    int get_input(int index) const;
     
     //! destructor
 

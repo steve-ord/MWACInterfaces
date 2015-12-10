@@ -37,9 +37,9 @@ EDABlock::EDABlock() {
 
     eda_block_hdr = (mwa_eda_shmbuf_header *) ptr;
 
-    char *base_ptr = (char *) ptr;
+    this->base_ptr = (char *) ptr;
     //! add the header
-    base_ptr += 4096;
+    this->base_ptr += 4096;
 
     set_complex_sample_size(2);
     /*! Default values for the current MWA correlator
@@ -159,7 +159,7 @@ void EDABlock::set_time(time_t the_time) {
     }
 
 }
-int EDABlock::get_input(int index) {
+int EDABlock::get_input(int index) const {
     return this->inputs[index];
 }
 time_t EDABlock::get_time() const {
