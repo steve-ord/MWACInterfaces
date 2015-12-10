@@ -16,6 +16,7 @@
 
 #define MWA_EDA_SHM_NAME    "mwa_eda"
 #define MWA_EDA_SHM_N_BLOCKS 10
+#define MWA_EDA_MAX_INPUTS 8
 
 enum mwa_eda_datatypes {COMPLEX_INT8_8=1};
 
@@ -38,6 +39,7 @@ typedef struct {
     volatile int newest_buf;
     sem_t sem;
     volatile int block_time_offset[MWA_EDA_SHM_N_BLOCKS];    // time offset (seconds) for the block relative to epoch_time
+    int input_id[MWA_EDA_MAX_INPUTS];    // time offset (seconds) for the block relative to epoch_time
 } mwa_eda_shmbuf_header;
 
 #endif

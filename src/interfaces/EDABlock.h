@@ -13,10 +13,10 @@
 #include <time.h>
 
 #include "File.h"
+#include "mwa_eda.h"
 
 class EDABlock: public File {
 
-public:
     //! Simple constructor uses the default eda parameters
     EDABlock();
 
@@ -35,15 +35,20 @@ public:
     //! just brings the default get_dat_ptr into this scope
     using File::get_dat_ptr;
     char * get_dat_ptr(int station, int pol, int chan, int step);
-
+    char * get_dat_ptr(int input, int chan,int step);
+    
     //! set the sample size (bytes)
-    void set_sample_size(int);
+    void set_complex_sample_size(int);
 
-    //! set the utctime of this File
+    //! match ... sets the current block to that requested - if it exists in the list
     void set_time(time_t utctime);
 
     //! get the time
     time_t get_time() const;
+
+    //! get the input id
+    int get_input(int index);
+    
     //! destructor
 
     ~EDABlock();
@@ -53,10 +58,20 @@ private:
     char * base_ptr;
     //! the size of a sample in bytes
     int sample_size;
-    //! the time lable of this file
-    time_t utctime;
-
-
+    //! the time epoch of these blocks
+    time_t epoch_time;
+    //! utctimes of all the blocks
+    volatile int *utctimes;
+    //! the number of blocks
+    int n_blocks;
+    //! current block being used
+    int current_block;
+    //! Inputs in these blocks
+    int n_inp;
+    //! array of inputs
+    int *inputs;
+    //! size of a block
+    size_t block_size;
 };
 
 

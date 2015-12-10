@@ -16,6 +16,8 @@
 
 #include <time.h>
 
+
+
 class File {
 public:
     //! Simple constructor
@@ -50,6 +52,12 @@ public:
     //! Set the number of time steps in the file
     void set_nsteps(int nstep);
 
+    //! Set complex sample size (bytes)
+    void set_complex_sample_size(int sz);
+
+    //! Get the complex sample size (bytes)
+    size_t get_complex_sample_size(void) const;
+    
     //! The time label of this frame
     virtual void set_time(time_t the_time) = 0;
 
@@ -63,7 +71,7 @@ public:
     virtual char * get_dat_ptr(void) = 0;
 
   
-
+   
     //! Destructor
     virtual ~File();
 private:
@@ -79,9 +87,13 @@ private:
     //! the number of time steps
     int nsteps;
 
+    //! size of a complex sample
+    size_t complex_sample_size;
+
 
 
 };
+
 
 #endif	/* FILE_H */
 

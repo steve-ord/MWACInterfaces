@@ -14,7 +14,7 @@ GPUBlock::GPUBlock() {
     /*! Default constructor for an MWA GPUBlock
      */
 
-    set_sample_size(1);
+    set_complex_sample_size(2);
     //! Default values for the current MWA correlator
     initialise(NULL, 128, 2, 128, 10000);
 
@@ -24,7 +24,7 @@ GPUBlock::GPUBlock(char *base,time_t utctime) {
     /*! Constructor for a GPUBlock if the memory has already been allocated
      this is likely to be the main constructor
      */
-    set_sample_size(1);
+    set_complex_sample_size(2);
     set_time(utctime);
     initialise(base,128, 2, 128, 10000);
 
@@ -33,7 +33,6 @@ GPUBlock::GPUBlock(char *base,time_t utctime) {
 GPUBlock::GPUBlock(const GPUBlock& orig) {
 
     this->base_ptr = orig.base_ptr;
-    this->sample_size = orig.sample_size;
     this->utctime = orig.utctime;
 
 
@@ -67,7 +66,19 @@ char * GPUBlock::get_base_addr() {
     return this->base_ptr;
 
 }
+char * GPUBlock::get_dat_ptr(int input,int chan,int step) {
+    /*! Get the data given only the input number - instead of antenna and pol
+     this is more likely to happen as a lot of the engineers think in input and not ant pol
+     
+     The good news is that as this is now in a sensible order I can just do:...
+     */
 
+    int antenna = input/this->get_npol();
+    int pol = input%2;
+    return get_dat_ptr(antenna,pol,chan,step);
+
+
+}
 char * GPUBlock::get_dat_ptr(int antenna, int pol, int chan, int step) {
 
     /*! Get a pointer to an individual sample
@@ -90,9 +101,9 @@ char * GPUBlock::get_dat_ptr(int antenna, int pol, int chan, int step) {
 
     int input = natural_to_mwac(antenna,pol);
 
-    size_t step_size = get_nchan() * get_nstation() * get_npol() * 2 * this->sample_size;
-    size_t channel_offset = get_nstation() * get_npol() * 2 * this->sample_size;
-    size_t input_offset = 2*this->sample_size;
+    size_t step_size = get_nchan() * get_nstation() * get_npol() * get_complex_sample_size();
+    size_t channel_offset = get_nstation() * get_npol() * get_complex_sample_size();
+    size_t input_offset = get_complex_sample_size();
     size_t offset = step*step_size + chan*channel_offset + input * input_offset;
 
     return get_base_addr()+offset;
@@ -174,6 +185,39 @@ void GPUBlock::set_time(time_t the_time) {
 time_t GPUBlock::get_time() const {
     return this->utctime;
 }
+
+template<class T>
+void operator+(GPUBlock& data, const T& interface ) {
+    /*! Simply have to overwrite each time sample in this GPUBlock with the relavant
+     sample from the interface */
+
+    if (data.get_nchan() != interface.get_nchan()) {
+        throw "Number of channel miss-match in interface";
+    }
+    if (data.get_nsteps() != interface.get_nsteps()) {
+        throw "Number of timesteps  miss-match in interface";
+    }
+
+    //! foreach time sample
+    for (int t=0; t<data.get_nsteps();t++) {
+        for (int f=0; f<data.get_nchan();f++) {
+        //! for each input in the interface
+            for (int i=0; i<interface.get_ninputs(); i++) {
+                //! get the interface input
+                int input = interface.get_input(i);
+                //! get the GPUBlock sample position
+                char *out_ptr = data.get_dat_ptr(input,f,t);
+                //! get the interface sample position
+                char *in_ptr = interface.get_dat_ptr(input,f,t);
+                memcpy(out_ptr,in_ptr,data.get_complex_sample_size());
+
+
+            }
+        }
+    }
+
+}
+
 GPUBlock::~GPUBlock() {
 
     

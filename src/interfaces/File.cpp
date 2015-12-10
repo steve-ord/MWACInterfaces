@@ -30,6 +30,12 @@ File::File(const File& orig) {
 File::~File() {
 }
 
+void File::set_complex_sample_size(int sz){
+    this->complex_sample_size = sz;
+}
+size_t File::get_complex_sample_size(void) const {
+    return this->complex_sample_size;
+}
 void File::set_nchan(int nchan) {
     this->nchan = nchan;
 }

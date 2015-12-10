@@ -15,6 +15,8 @@
 #include "File.h"
 #include "GPUBlock.h"
 
+
+
 class GPUBlock: public File {
 
 public:
@@ -39,7 +41,8 @@ public:
     //! just brings the default get_dat_ptr into this scope
     using File::get_dat_ptr;
     char * get_dat_ptr(int station, int pol, int chan, int step);
-
+    char * get_dat_ptr(int input,int chan, int step);
+    
     //! set the sample size (bytes)
     void set_sample_size(int);
 
@@ -48,15 +51,18 @@ public:
 
     //! get the time
     time_t get_time() const;
-    //! destructor
 
+
+    //! the template for the addition operation
+    template <class T>
+    int operator+(const T interface);
+
+    //! destructor
     ~GPUBlock();
 
 private:
     //! The pointer to first sample
     char * base_ptr;
-    //! the size of a sample in bytes
-    int sample_size;
     //! the input mapping function
     int natural_to_mwac(int antenna, int pol) const;
     //! the time lable of this file
